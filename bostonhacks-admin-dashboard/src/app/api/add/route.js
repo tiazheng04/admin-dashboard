@@ -1,5 +1,6 @@
 import prisma from '../../../../lib/prisma';
 import { NextResponse } from "next/server";
+
 export async function POST(req) {
   try {
     const data = await req.json();
@@ -7,18 +8,12 @@ export async function POST(req) {
       data
     });
     return new NextResponse(JSON.stringify(newApplicant), {
-      status: 200,
       headers: {
         'Content-Type': 'application/json'
+        //ensures that JSON data to ensure proper handling by the client
       }
     });
   } catch (error) {
-    console.error('Error adding new applicant:', error);
-    return new NextResponse(JSON.stringify({ message: 'Failed to add new applicant', error: error.message }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+    console.error('Error adding new applicant')
   }
 }
