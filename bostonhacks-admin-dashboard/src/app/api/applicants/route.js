@@ -5,3 +5,4 @@ export const GET = async (req, res) => {
   const test = await prisma.applicant.findMany()
   return NextResponse.json(test);
 }
+
